@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webrtcStreamPlayer</title>
+</head>
+<body>
+  <div style="display: flex;flex-direction: column;align-items: center;">
+    <div style="height: 100px;font-size: 20px;line-height: 100px;">
+      <span style="margin-right: 10px;">webrtcStreamPlayer</span>
+      <input id="webrtcStreamURL" style="width: 600px;height: 50px;line-height: 50px;font-size: 25px;" type="url" placeholder="Player by URL" value="webrtc://osiii.com/live/livestream">
+      <button style="width: 60px;height: 53px;line-height: 50px;font-size: 16px;position: absolute;top: 30px;margin-left: 10px;" onclick="play()">播放</button>
+    </div>
+    <video id="video-webrtc" controls style="width: 600px; height: 500px;"></video>
+  </div>
+	<script type="text/javascript" src="./jswebrtc.min.js"></script>
+  <script type="text/javascript">
+    function play () {
+      var video = document.getElementById('video-webrtc');
+      var url = document.getElementById('webrtcStreamURL').value
+      var player = new JSWebrtc.Player(url, { video: video, autoplay: true, onPlay: (obj) => { console.log("start play") } });
+    }
+	</script>
+</body>
+</html>
